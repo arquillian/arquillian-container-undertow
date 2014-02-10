@@ -28,15 +28,15 @@ For this reason +Arquillian-Container-Undertow+ provides a +Shrinkwrap+ resolver
 public static Archive<WebArchive> createDeployment() {
 	return ShrinkWrap.create(UndertowWebArchive.class).from(
 			deployment()
-					.setContextPath("/myapp")
-					.setDeploymentName("test.war")
-					.setClassLoader(
-							EmbeddedUndertowClientWebContainerTest.class
-									.getClassLoader())
-					.addServlet(
-							servlet("MessageServlet", MessageServlet.class)
-									.addInitParam("message", "Hello World")
-									.addMapping(SERVLET_MAPPING)));
+			.setContextPath("/myapp")
+			.setDeploymentName("test.war")
+			.setClassLoader(
+					EmbeddedUndertowClientWebContainerTest.class
+							.getClassLoader())
+			.addServlet(
+					servlet("MessageServlet", MessageServlet.class)
+							.addInitParam("message", "Hello World")
+							.addMapping(SERVLET_MAPPING)));
 }
 ----
 
