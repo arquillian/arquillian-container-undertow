@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.jboss.arquillian.container</groupId>
+	<artifactId>arquillian-parent-undertow</artifactId>
+	<version>1.0.0.Beta1</version>
+	<packaging>pom</packaging>
+
+	<!-- SCM -->
+	<scm>
+		<connection>scm:git:git://github.com/arquillian/arquillian-container-undertow.git</connection>
+		<developerConnection>scm:git:git@github.com:arquillian/arquillian-container-undertow.git</developerConnection>
+		<url>https://github.com/arquillian/arquillian-container-undertow</url>
+	</scm>
+
+	<!-- Issues -->
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/arquillian/arquillian-container-undertow/issues</url>
+	</issueManagement>
+
+	<!-- Licenses -->
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<parent>
+		<groupId>org.jboss</groupId>
+		<artifactId>jboss-parent</artifactId>
+		<version>8</version>
+	</parent>
+
+	<properties>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<version.org.jboss.shrinkwrap>1.2.1</version.org.jboss.shrinkwrap>
+		<version.junit>4.11</version.junit>
+		<version.undertow>1.0.0.CR5</version.undertow>
+		<version.arquillian.core>1.1.1.Final</version.arquillian.core>
+		<version.async.http.client>1.8.2</version.async.http.client>
+	</properties>
+
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- Shrinkwrap Dependencies -->
+
+			<dependency>
+				<groupId>org.jboss.shrinkwrap</groupId>
+				<artifactId>shrinkwrap-api</artifactId>
+				<version>${version.org.jboss.shrinkwrap}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jboss.shrinkwrap</groupId>
+				<artifactId>shrinkwrap-impl-base</artifactId>
+				<version>${version.org.jboss.shrinkwrap}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<scope>test</scope>
+				<version>${version.junit}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ning</groupId>
+				<artifactId>async-http-client</artifactId>
+				<version>${version.async.http.client}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Undertow dependencies -->
+
+			<dependency>
+				<groupId>io.undertow</groupId>
+				<artifactId>undertow-core</artifactId>
+				<version>${version.undertow}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.undertow</groupId>
+				<artifactId>undertow-servlet</artifactId>
+				<version>${version.undertow}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.undertow</groupId>
+				<artifactId>undertow-websockets-jsr</artifactId>
+				<version>${version.undertow}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+
+	<modules>
+		<module>shrinkwrap-container-undertow</module>
+		<module>undertow-embedded</module>
+	</modules>
+</project>

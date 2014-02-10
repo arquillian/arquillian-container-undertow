@@ -1,0 +1,115 @@
+= Arquillian-Container-Undertow
+
+== Undertow
+
++Undertow+ is a flexible performant web server written in java, providing both blocking and non-blocking _API_’s based on _NIO_.
+
++Undertow+ has a composition based architecture that allows you to build a web server by combining small single purpose handlers. The gives you the flexibility to choose between a full _Java EE_ servlet 3.1 container, or a low level non-blocking handler, to anything in between.
+
++Undertow+ is sponsored by JBoss and is the default web server in the +Wildfly Application Server+.
+
+== Writing tests for Undertow
+
++Arquillian-Container-Undertow+ as every _Arquillian Container Extension_  it take cares of you of starting, stopping and deploying the application. Also provides an +Shrinkwrap+ resolver for creating the +Undertow+ deployment file.
+
+To simplify the development of tests on +Undertow+ we have created two +Shrinkwrap+ resolvers:
+
+* Embedded Servlet Deployment
+* Non-blocking handler
+
+=== Embedded Servlet Deployment
+
+When you want to deploy a servlet/s inside +Undertow+, you must create a _DeploymentInfo_ class and provide all the required information. 
+For this reason +Arquillian-Container-Undertow+ provides a +Shrinkwrap+ resolver named _UndertowWebArchive_.
+
+[source, java]
+----
+@Deployment(testable = false)
+public static Archive<WebArchive> createDeployment() {
+	return ShrinkWrap.create(UndertowWebArchive.class).from(
+			deployment()
+					.setContextPath("/myapp")
+					.setDeploymentName("test.war")
+					.setClassLoader(
+							EmbeddedUndertowClientWebContainerTest.class
+									.getClassLoader())
+					.addServlet(
+							servlet("MessageServlet", MessageServlet.class)
+									.addInitParam("message", "Hello World")
+									.addMapping(SERVLET_MAPPING)));
+}
+----
+
+And then we can write our test:
+
+[source, java]
+----
+@Test
+public void shouldBeAbleToInvokeServletInDeployedWebApp(
+		@ArquillianResource URL url) throws Exception {
+
+	String body = readAllAndClose(new URL(url, "myservlet").openStream());
+		
+	assertThat(body, is("Hello World"));
+}
+----
+
+=== Non-blocking handler
+
+But with +Undertow+ you can also write non-blocking handlers. For creating a non-blocking handler in +Undertow+ you simply must create a class that implements _DD_ interface and register it. For this reason +Arquillian-Container-Undertow+ provides a +Shrinkwrap+ resolver named _sss_.
+
+[source, java]
+----
+@Deployment(testable = false)
+public static Archive<JavaArchive> createDeployment() {
+	return ShrinkWrap.create(UndertowHttpHandlerArchive.class).from(new HttpHandler() {
+           @Override
+           public void handleRequest(final HttpServerExchange exchange) throws Exception {
+               exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/plain");
+               exchange.getResponseSender().send("Hello World");
+           }
+       });
+}
+----
+
+And then we can write our test:
+
+[source, java]
+----
+@Test
+public void shouldBeAbleToInvokeHandlers(@ArquillianResource URL url) throws Exception {
+
+	String body = readAllAndClose(url.openStream());
+		
+	assertThat(body, is("Hello World"));
+
+}
+----
+
+=== Configuration
+
+You can configure the bind address and port of +Undertow+. By default +Undertow+ is opened at _localhost:8080_.
+
+[source, xml]
+----
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://jboss.org/schema/arquillian"
+    xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+    <container qualifier="undertow" default="true">
+    </container>
+</arquillian>
+----
+
+But you can also set the bind address and the listening port.
+
+[source, xml]
+----
+<container qualifier="undertow" default="true">
+	<configuration>
+		<property name="bindAddress">localhost</property>
+		<property name="bindHttpPort">9090</property>
+	</configuration>
+</container>
+----
