@@ -109,7 +109,8 @@ But you can also set the bind address and the listening port.
 <container qualifier="undertow" default="true">
 	<configuration>
 		<property name="bindAddress">localhost</property>
-		<property name="bindHttpPort">9090</property>
+		<property name="bindHttpPort">9090</property> <!-- <1> -->
 	</configuration>
 </container>
 ----
+<1> If port is set to -1, a random port between 1024 and 49151 is used.
