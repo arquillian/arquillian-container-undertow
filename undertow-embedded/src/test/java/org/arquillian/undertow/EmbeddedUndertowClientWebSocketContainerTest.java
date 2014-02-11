@@ -70,7 +70,7 @@ public class EmbeddedUndertowClientWebSocketContainerTest {
 		AsyncHttpClient c = new AsyncHttpClient();
 
 		WebSocket websocket = c
-				.prepareGet("ws://localhost:8080/myapp")
+				.prepareGet("ws://"+url.getHost()+":"+url.getPort()+"/myapp")
 				.execute(
 						new WebSocketUpgradeHandler.Builder()
 								.addWebSocketListener(
@@ -105,6 +105,7 @@ public class EmbeddedUndertowClientWebSocketContainerTest {
 
 		websocket.sendTextMessage("Hello World");
 		assertThat(latch.await(5, TimeUnit.SECONDS), is(true));
+		c.close();
 		
 	}
 
