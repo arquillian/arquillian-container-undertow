@@ -4,10 +4,13 @@
 	<parent>
 		<groupId>org.jboss.arquillian.container</groupId>
 		<artifactId>arquillian-parent-undertow</artifactId>
-		<version>1.0.0.Beta1-SNAPSHOT</version>
+		<version>1.0.0.Alpha1-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>shrinkwrap-container-undertow</artifactId>
+
+	<name>ShrinkWrap Container Undertow Integration Extension</name>
+	<description>ShrinkWrap integration extension for the Undertow container</description>
 
 	<dependencies>
 
