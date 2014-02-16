@@ -1,15 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.jboss.arquillian.container</groupId>
 		<artifactId>arquillian-parent-undertow</artifactId>
-		<version>1.0.0.Alpha1-SNAPSHOT</version>
+		<version>1.0.0.Final-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>undertow-embedded</artifactId>
 
-	<name>Arquillian container embedded Undertow</name>
+	<name>Arquillian Container Undertow Embedded</name>
 	<description>Embedded Undertow container integration for the Arquillian project</description>
 
 	<dependencyManagement>

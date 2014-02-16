@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
 		<groupId>org.jboss</groupId>
@@ -10,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jboss.arquillian.container</groupId>
 	<artifactId>arquillian-parent-undertow</artifactId>
-	<version>1.0.0.Alpha1-SNAPSHOT</version>
+	<version>1.0.0.Final-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 
@@ -47,6 +46,7 @@
 	</licenses>
 
 	<properties>
+                <version.release.plugin>2.1</version.release.plugin>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<version.org.jboss.shrinkwrap>1.2.1</version.org.jboss.shrinkwrap>
@@ -115,6 +115,18 @@
 		</dependencies>
 	</dependencyManagement>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <pushChanges>false</pushChanges>
+                    <localCheckout>true</localCheckout>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 	<modules>
 		<module>shrinkwrap-container-undertow</module>
