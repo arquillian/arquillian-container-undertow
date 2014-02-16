@@ -56,7 +56,7 @@ public void shouldBeAbleToInvokeServletInDeployedWebApp(
 
 === Non-blocking handler
 
-But with +Undertow+ you can also write non-blocking handlers. For creating a non-blocking handler in +Undertow+ you simply must create a class that implements _DD_ interface and register it. For this reason +Arquillian-Container-Undertow+ provides a +Shrinkwrap+ resolver named _sss_.
+But with +Undertow+ you can also write non-blocking handlers. For creating a non-blocking handler in +Undertow+ you simply must create a class that implements _HttpHandler_ interface and register it. For this reason +Arquillian-Container-Undertow+ provides a +Shrinkwrap+ resolver named _UndertowHttpHandlerArchive_.
 
 [source, java]
 ----
@@ -114,3 +114,29 @@ But you can also set the bind address and the listening port.
 </container>
 ----
 <1> If port is set to -1, a random port between 1024 and 49151 is used.
+
+== Maven
+
++Arquillian-Container-Undertow+ is released on _JBoss Maven Repositories_ so you need to set it on your _pom_ file.
+
+[source, xml]
+----
+<repositories>
+	<repository>
+    	<id>jboss-public-repository-group</id>
+        <name>JBoss Public Maven Repository Group</name>
+        <url>https://repository.jboss.org/nexus/content/groups/public</url>
+	</repository>
+</repositories>
+----
+
+And add dependency as:
+
+[source, xml]
+----
+<dependency>
+  <groupId>org.jboss.arquillian.container</groupId>
+  <artifactId>undertow-embedded</artifactId>
+  <version>1.0.0.Alpha1</version>
+</dependency>
+----
