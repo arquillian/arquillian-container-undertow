@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jboss.arquillian.container</groupId>
 	<artifactId>arquillian-parent-undertow</artifactId>
-	<version>1.0.0.Final-SNAPSHOT</version>
+	<version>1.0.0.Alpha2</version>
 	<packaging>pom</packaging>
 
 
@@ -29,7 +29,8 @@
 		<connection>scm:git:git://github.com/arquillian/arquillian-container-undertow.git</connection>
 		<developerConnection>scm:git:git@github.com:arquillian/arquillian-container-undertow.git</developerConnection>
 		<url>https://github.com/arquillian/arquillian-container-undertow</url>
-	</scm>
+	  <tag>1.0.0.Alpha2</tag>
+  </scm>
 
 	<!-- Issues -->
 	<issueManagement>
