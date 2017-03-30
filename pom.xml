@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-parent</artifactId>
-    <version>19</version>
+    <version>22</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -52,9 +52,9 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <version.org.jboss.shrinkwrap>1.2.1</version.org.jboss.shrinkwrap>
-    <version.junit>4.11</version.junit>
+    <version.junit>4.12</version.junit>
     <version.undertow>1.0.0.CR5</version.undertow>
-    <version.arquillian.core>1.1.1.Final</version.arquillian.core>
+    <version.arquillian.core>1.1.13.Final</version.arquillian.core>
     <version.async.http.client>1.8.2</version.async.http.client>
   </properties>
 
