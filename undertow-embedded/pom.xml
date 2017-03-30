@@ -1,71 +1,72 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.jboss.arquillian.container</groupId>
-		<artifactId>arquillian-parent-undertow</artifactId>
-		<version>1.0.0.Final-SNAPSHOT</version>
-		<relativePath>..</relativePath>
-	</parent>
-	<artifactId>undertow-embedded</artifactId>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jboss.arquillian.container</groupId>
+    <artifactId>arquillian-parent-undertow</artifactId>
+    <version>1.0.0.Final-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
+  <artifactId>undertow-embedded</artifactId>
 
-	<name>Arquillian Container Undertow Embedded</name>
-	<description>Embedded Undertow container integration for the Arquillian project</description>
+  <name>Arquillian Container Undertow Embedded</name>
+  <description>Embedded Undertow container integration for the Arquillian project</description>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jboss.arquillian</groupId>
-				<artifactId>arquillian-bom</artifactId>
-				<version>${version.arquillian.core}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.arquillian</groupId>
+        <artifactId>arquillian-bom</artifactId>
+        <version>${version.arquillian.core}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-	<dependencies>
+  <dependencies>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
 
-		<dependency>
-			<groupId>com.ning</groupId>
-			<artifactId>async-http-client</artifactId>
-		</dependency>
+    <dependency>
+      <groupId>com.ning</groupId>
+      <artifactId>async-http-client</artifactId>
+    </dependency>
 
-		<dependency>
-			<groupId>org.jboss.arquillian.container</groupId>
-			<artifactId>shrinkwrap-container-undertow</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.container</groupId>
+      <artifactId>shrinkwrap-container-undertow</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
-		<!-- Arquillian dependencies -->
+    <!-- Arquillian dependencies -->
 
-		<dependency>
-			<groupId>org.jboss.arquillian.junit</groupId>
-			<artifactId>arquillian-junit-container</artifactId>
-			<scope>test</scope>
-		</dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <scope>test</scope>
+    </dependency>
 
-		<dependency>
-			<groupId>org.jboss.arquillian.container</groupId>
-			<artifactId>arquillian-container-spi</artifactId>
-		</dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.container</groupId>
+      <artifactId>arquillian-container-spi</artifactId>
+    </dependency>
 
-		<dependency>
-			<groupId>org.jboss.arquillian.container</groupId>
-			<artifactId>arquillian-container-test-spi</artifactId>
-		</dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.container</groupId>
+      <artifactId>arquillian-container-test-spi</artifactId>
+    </dependency>
 
-		<!-- For @ArquillianResource annotated InitialContext injection points -->
-		<dependency>
-			<groupId>org.jboss.arquillian.testenricher</groupId>
-			<artifactId>arquillian-testenricher-initialcontext</artifactId>
-		</dependency>
+    <!-- For @ArquillianResource annotated InitialContext injection points -->
+    <dependency>
+      <groupId>org.jboss.arquillian.testenricher</groupId>
+      <artifactId>arquillian-testenricher-initialcontext</artifactId>
+    </dependency>
 
 
-	</dependencies>
+  </dependencies>
 
 </project>

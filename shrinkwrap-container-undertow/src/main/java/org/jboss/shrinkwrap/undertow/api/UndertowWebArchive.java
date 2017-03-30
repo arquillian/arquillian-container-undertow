@@ -7,8 +7,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 
 public interface UndertowWebArchive extends Archive<WebArchive> {
 
-	UndertowWebArchive from(DeploymentInfo deployment);
+    UndertowWebArchive from(DeploymentInfo deployment);
 
-	DeploymentInfo getDeploymentInfo();
-	
+    DeploymentInfo getDeploymentInfo();
 }

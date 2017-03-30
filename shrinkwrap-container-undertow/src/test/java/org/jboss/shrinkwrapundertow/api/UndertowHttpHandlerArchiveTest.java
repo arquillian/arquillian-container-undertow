@@ -1,7 +1,7 @@
 package org.jboss.shrinkwrapundertow.api;
 
-	import static org.hamcrest.CoreMatchers.is;
-	import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
@@ -13,20 +13,18 @@ import org.junit.Test;
 
 public class UndertowHttpHandlerArchiveTest {
 
-	@Test
-	public void httpHandlerClassShouldBeBuildUsingShrinkwrap() {
-		
-		HttpHandler handler = new HttpHandler() {
+    @Test
+    public void httpHandlerClassShouldBeBuildUsingShrinkwrap() {
+
+        HttpHandler handler = new HttpHandler() {
             @Override
             public void handleRequest(final HttpServerExchange exchange) throws Exception {
                 exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/plain");
                 exchange.getResponseSender().send("Hello World");
             }
         };
-		UndertowHttpHandlerArchive httpHandler = ShrinkWrap.create(UndertowHttpHandlerArchive.class).from(handler);
-		
-		assertThat(httpHandler.getHttpHandler(), is(handler));
-		
-	}
-	
+        UndertowHttpHandlerArchive httpHandler = ShrinkWrap.create(UndertowHttpHandlerArchive.class).from(handler);
+
+        assertThat(httpHandler.getHttpHandler(), is(handler));
+    }
 }

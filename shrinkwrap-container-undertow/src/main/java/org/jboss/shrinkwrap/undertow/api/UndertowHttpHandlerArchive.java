@@ -7,8 +7,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 public interface UndertowHttpHandlerArchive extends Archive<JavaArchive> {
 
-	public UndertowHttpHandlerArchive from(HttpHandler handler);
+    public UndertowHttpHandlerArchive from(HttpHandler handler);
 
-	public HttpHandler getHttpHandler();
-	
+    public HttpHandler getHttpHandler();
 }

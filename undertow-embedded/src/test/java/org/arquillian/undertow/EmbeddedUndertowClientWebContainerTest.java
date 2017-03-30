@@ -22,48 +22,46 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class EmbeddedUndertowClientWebContainerTest {
 
-	private static final String SERVLET_MAPPING = "/*";
-	
-	@Deployment(testable = false)
-	public static Archive<WebArchive> createDeployment() {
-		return ShrinkWrap.create(UndertowWebArchive.class).from(
-				deployment()
-						.setContextPath("/myapp")
-						.setDeploymentName("test.war")
-						.setClassLoader(
-								EmbeddedUndertowClientWebContainerTest.class
-										.getClassLoader())
-						.addServlet(
-								servlet("MessageServlet", MessageServlet.class)
-										.addInitParam("message", "Hello World")
-										.addMapping(SERVLET_MAPPING)));
-	}
+    private static final String SERVLET_MAPPING = "/*";
 
-	@Test
-	public void shouldBeAbleToInvokeServletInDeployedWebApp(
-			@ArquillianResource URL url) throws Exception {
+    @Deployment(testable = false)
+    public static Archive<WebArchive> createDeployment() {
+        return ShrinkWrap.create(UndertowWebArchive.class).from(
+            deployment()
+                .setContextPath("/myapp")
+                .setDeploymentName("test.war")
+                .setClassLoader(
+                    EmbeddedUndertowClientWebContainerTest.class
+                        .getClassLoader())
+                .addServlet(
+                    servlet("MessageServlet", MessageServlet.class)
+                        .addInitParam("message", "Hello World")
+                        .addMapping(SERVLET_MAPPING)));
+    }
 
-		String body = readAllAndClose(
-	            new URL(url, "myservlet").openStream());
-		
-		assertThat(body, is("Hello World"));
+    @Test
+    public void shouldBeAbleToInvokeServletInDeployedWebApp(
+        @ArquillianResource URL url) throws Exception {
 
-	}
+        String body = readAllAndClose(
+            new URL(url, "myservlet").openStream());
 
-	private String readAllAndClose(InputStream is) throws Exception {
-		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		try {
-			int read;
-			while ((read = is.read()) != -1) {
-				out.write(read);
-			}
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e) {
-			}
-		}
-		return out.toString();
-	}
+        assertThat(body, is("Hello World"));
+    }
 
+    private String readAllAndClose(InputStream is) throws Exception {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        try {
+            int read;
+            while ((read = is.read()) != -1) {
+                out.write(read);
+            }
+        } finally {
+            try {
+                is.close();
+            } catch (Exception e) {
+            }
+        }
+        return out.toString();
+    }
 }

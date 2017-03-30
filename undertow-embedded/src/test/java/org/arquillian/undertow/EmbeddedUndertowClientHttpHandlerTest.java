@@ -2,6 +2,7 @@ package org.arquillian.undertow;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.util.Headers;
@@ -23,41 +24,39 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class EmbeddedUndertowClientHttpHandlerTest {
 
-	@Deployment(testable = false)
-	public static Archive<JavaArchive> createDeployment() {
-		return ShrinkWrap.create(UndertowHttpHandlerArchive.class).from(new HttpHandler() {
+    @Deployment(testable = false)
+    public static Archive<JavaArchive> createDeployment() {
+        return ShrinkWrap.create(UndertowHttpHandlerArchive.class).from(new HttpHandler() {
             @Override
             public void handleRequest(final HttpServerExchange exchange) throws Exception {
                 exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/plain");
                 exchange.getResponseSender().send("Hello World");
             }
         });
-	}
-	
-	@Test
-	public void shouldBeAbleToInvokeHandlers(@ArquillianResource URL url) throws Exception {
+    }
 
-		String body = readAllAndClose(
-	            url.openStream());
-		
-		assertThat(body, is("Hello World"));
+    @Test
+    public void shouldBeAbleToInvokeHandlers(@ArquillianResource URL url) throws Exception {
 
-	}
-	
-	private String readAllAndClose(InputStream is) throws Exception {
-		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		try {
-			int read;
-			while ((read = is.read()) != -1) {
-				out.write(read);
-			}
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e) {
-			}
-		}
-		return out.toString();
-	}
-	
+        String body = readAllAndClose(
+            url.openStream());
+
+        assertThat(body, is("Hello World"));
+    }
+
+    private String readAllAndClose(InputStream is) throws Exception {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        try {
+            int read;
+            while ((read = is.read()) != -1) {
+                out.write(read);
+            }
+        } finally {
+            try {
+                is.close();
+            } catch (Exception e) {
+            }
+        }
+        return out.toString();
+    }
 }
