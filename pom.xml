@@ -55,7 +55,7 @@
     <version.junit>4.12</version.junit>
     <version.undertow>1.0.0.CR5</version.undertow>
     <version.arquillian.core>1.1.13.Final</version.arquillian.core>
-    <version.async.http.client>1.8.2</version.async.http.client>
+    <version.async.http.client>1.9.40</version.async.http.client>
   </properties>
 
 
