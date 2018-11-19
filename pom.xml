@@ -51,7 +51,7 @@
     <version.release.plugin>2.5.3</version.release.plugin>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <version.org.jboss.shrinkwrap>1.2.1</version.org.jboss.shrinkwrap>
+    <version.org.jboss.shrinkwrap>1.2.6</version.org.jboss.shrinkwrap>
     <version.junit>4.12</version.junit>
     <version.undertow>1.0.0.CR5</version.undertow>
     <version.arquillian.core>1.1.13.Final</version.arquillian.core>
