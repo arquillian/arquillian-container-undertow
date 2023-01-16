@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-parent</artifactId>
-    <version>22</version>
+    <version>39</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -49,13 +49,14 @@
 
   <properties>
     <version.release.plugin>2.5.3</version.release.plugin>
-    <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.7</maven.compiler.source>
     <version.org.jboss.shrinkwrap>1.2.1</version.org.jboss.shrinkwrap>
-    <version.junit>4.12</version.junit>
-    <version.undertow>1.0.0.CR5</version.undertow>
-    <version.arquillian.core>1.1.13.Final</version.arquillian.core>
-    <version.async.http.client>1.8.2</version.async.http.client>
+    <version.junit>4.13.2</version.junit>
+    <version.undertow>2.3.3.Final</version.undertow>
+    <version.arquillian.core>1.6.0.Final</version.arquillian.core>
+    <!-- bumping to 1.9 or switching to org.asynchttpclient successor requires some rewrite -->
+    <version.async.http.client>1.8.17</version.async.http.client>
   </properties>
 
 
@@ -108,9 +109,9 @@
         <version>${version.undertow}</version>
       </dependency>
       <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
-        <version>3.1.0</version>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>6.0.0</version>
         <scope>provided</scope>
       </dependency>
 

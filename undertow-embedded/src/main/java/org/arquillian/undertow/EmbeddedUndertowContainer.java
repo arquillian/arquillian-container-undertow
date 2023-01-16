@@ -11,7 +11,7 @@ import io.undertow.servlet.api.ServletInfo;
 import java.util.Collection;
 import java.util.Map;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.jboss.arquillian.container.spi.client.container.DeployableContainer;
 import org.jboss.arquillian.container.spi.client.container.DeploymentException;
